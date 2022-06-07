@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--언어를 설정-->
+<!--html -->
+
+<head>
+    <!--웹 검색시 정보, 메타정보..? / 반드시 있어야 함(없어도 에러는 안남)-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개페이지</title>
+    <!--위의 탭에 나타남 화면에 나타나지 않음 -->
+</head>
+
+<body>
+    <!--화면에 나타나는 정보-->
+    <h3>홍길동</h3>
+    <!--태그는 대소문자 상관X-->
+    <h3>20살</h3>
+    <h3>010-1234-1234</h3>
+    <a href="index.html">첫페이지</a>
+
+    <ul id="fruit" style="color: hotpink; background-color: antiquewhite;">
+        <!--키와 값.-->
+        <li>사과</li>
+        <li>바나나</li>
+        <li>체리</li>
+    </ul>
+    <h3>재밌다 히히</h3>
+    <script>
+        let h3s = document.getElementsByTagName('h3');
+        console.log(h3s[0].innerText);
+        h3s[0].innerText = 'Hong Gildong'; //
+
+        let fruit = document.getElementById('fruit');
+        console.log(fruit);
+        fruit.children[0].innerText = 'Apple';
+    </script>
+</body>
+
+</html>

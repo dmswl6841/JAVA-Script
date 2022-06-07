@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list.html</title>
+</head>
+
+<body>
+    <ol type="i">
+        <li>
+            <ul>바뷔치
+                <li>매참김밥</li>
+                <li>치킨김밥</li>
+            </ul>
+            <ul>한솥
+                <li>치킨마요 </li>
+                <li>김치볶음밥</li>
+            </ul>
+            <ul>편의점
+                <li>라면</li>
+            </ul>
+        <li>만복국수 집밥정식</li>
+
+        </ul>
+        </li>
+    </ol>
+
+    <h3>메뉴판</h3>
+    <ol>
+        <li>커피
+            <ul>
+                <li>아이스아메리카노</li>
+                <li>카페라떼</li>
+                <li>아이스크림라떼</li>
+                <li>카라멜마끼아또</li>
+            </ul>
+        </li>
+        <li>과일
+            <ol type="i">
+                <li>바나나</li>
+                <li>사과</li>
+                <li>오렌지</li>
+            </ol>
+        </li>
+    </ol>
+
+
+    <dl>
+        <dt>커피의 종류</dt>
+        <!--하위태그 부모자식태그 아님!-->
+        <dd>--아메리카노</dd>
+        <dd>--카페라떼</dd>
+        <dt>생과일주스</dt>
+        <dd>--수박주스</dd>
+        <dd>--딸기주스</dd>
+        <dd>--망고주스</dd>
+    </dl>
+
+    <table border="1">
+        <!--표 만들기-->
+        <h3>학생성적</h3>
+        <tr>
+            <td>이름</td>
+            <td>영어점수</td>
+            <td>국어점수</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>90</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>인은지</td>
+            <td>85</td>
+            <td>100</td>
+        </tr>
+
+    </table><br>
+
+    <h3>학생성적합계</h3>
+    <table border="1">
+        <tr>
+            <td>이름</td>
+            <td>영어점수</td>
+            <td>수학점수</td>
+            <td>합계</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>80</td>
+            <td>85</td>
+            <td>165</td>
+        </tr>
+        <tr>
+            <td>김민수</td>
+            <td>75</td>
+            <td>75</td>
+            <td>150</td>
+        </tr>
+        <tr>
+            <td>이규식</td>
+            <td>88</td>
+            <td>77</td>
+            <td>165</td>
+        </tr>
+    </table>
+    <br>
+    <h3>이력서</h3>
+    <table border="1">
+        <tr>
+            <td>이름</td>
+            <td width="100px"></td>
+            <td>연락처</td>
+            <td width="100px"></td>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td colspan="3"></td>
+
+        </tr>
+        <tr>
+            <td>자기소개</td>
+            <td colspan="3"></td>
+            <!--column을 합침-->
+        </tr>
+    </table>
+    <br>
+
+    <table border="1">
+        <thead>
+            <caption>학생성적리스트</caption> <!--표에 대한 타이틀-->
+            <tr>
+                <th rowspan="2">이름</th>
+                <!--row를 합침-->
+                <th>영어</th>
+                <th rowspan="2">사진</th>
+            </tr>
+            <tr>
+                <th>수학</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td rowspan="2" style="text-align : center;"><a href="https://www.naver.com/">홍길동</a></td>
+                <td style="text-align : right;">90</td>
+                <td rowspan="2"><img src="images/B.PNG" width="150" alt="사진"></td>
+            </tr>
+            <tr>
+                <td style="text-align : right;">80</td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="text-align : center;">김민수</td>
+                <td style="text-align : right;">80</td>
+                <td rowspan="2"><img src="images/A.PNG" width="150" alt="사진"></td>
+            </tr>
+            <tr>
+                <td style="text-align : right;">70</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" style="text-align : center;"><a href="profile.html">인은지</a></td>
+                <td style="text-align : right;">90</td>
+                <td rowspan="2"><img src="images/C.PNG" width="150" alt="사진"></td>
+            </tr>
+            <tr>
+                <td style="text-align : right;">95</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>
