@@ -18,11 +18,11 @@ public class EmpDAO extends DAO {
 			psmt.setString(2, emp.getEmail());
 			psmt.setString(3, emp.getJobID());
 			psmt.setString(4, emp.getHireDate());
-			
+
 			int r = psmt.executeUpdate();
-			
+
 			System.out.println(r + "건 입력");
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
