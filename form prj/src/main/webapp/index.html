@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index.html</title>
+</head>
+<body>
+	<form action="form.jsp" method="post">
+		<label for = "last_name">이름 : </label>
+		<!-- 조회할 때는 get, 중요한 내용 숨길때는 post -->
+		<input type="text" id="" name="last_name" value="admin"> <br>
+		<input type="text" name="email"> <br>
+		<input type="text" name="job_id" value="IT_PROG" readonly> <br>
+		<input	type="date" name="hire_date"> <br>
+		<input type="hidden" name="userpw" value="password"> <br>
+		<label for = "women">여자</label>
+		<input type="radio" id = "women" name="gender" value="F">
+		<label for = "men">남자</label>
+		<input type="radio" id = "men" name="gender" value="M"><br>
+		<input type="checkbox" name="hobby" value="read_books">독서
+		<input type="checkbox" name="hobby"	value="health">운동 
+		<input type="checkbox" name="hobby"	value="cooking">요리
+		<input type="checkbox" name="hobby"	value="play_the_game">게임
+		<input type="checkbox" name="hobby"	value="watching_moivie">영화 <br>
+		<input type="range"min="5" max="10" name="range">
+		<input type="submit"value="전송">
+	</form>
+</body>
+</html>
