@@ -28,15 +28,3 @@ str += '</table>';
 console.log(str);
 document.write(str);
 
-function getFirstDay(mon) {
-    switch (mon) {
-        case 6:
-            return 4;
-        case 7:
-            return 6;
-        default:
-            0;
-    }
-}
-console.log(getFirstDay(6));
-document.write(getFirstDay(6));
