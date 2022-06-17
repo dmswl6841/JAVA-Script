@@ -1,7 +1,7 @@
 // exception.js
 
 let fname = document.getElementById('selectFile');
-let data ='';
+let data = '';
 
 try {
     const reader = new FileReader();

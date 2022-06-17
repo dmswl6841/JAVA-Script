@@ -25,24 +25,24 @@ const student2 = {
 class Student {
     constructor(sno, sname, age) { //생성자
         this.sno = sno;
-        this.sname=sname;
-        this.age=age;
+        this.sname = sname;
+        this.age = age;
     }
     //메소드
-    setMathScore(mathScore){
+    setMathScore(mathScore) {
         this.mathScore = mathScore;
     }
-    setEngScore(engScore){
+    setEngScore(engScore) {
         this.engScore = engScore;
     }
-    showInfo () {
+    showInfo() {
         return '이름은' + this.sname + ', 나이는 : ' + this.age
     }
 }
 
-const student3 = new Student('22-0111','허숙희',25);
+const student3 = new Student('22-0111', '허숙희', 25);
 student3.setMathScore = 87;
-student3.setEngScore=76;
+student3.setEngScore = 76;
 
 console.log(student2);
 console.log(student3);

@@ -162,37 +162,38 @@ console.log(sum1(1, 2));
 console.log(sum1(1));
 
 //p.81 06.화살표함수 기초
-let multiply = (a,b,...args)=>{
-    let result = a*b;
-    for(let i = 0; i<args.length; i++){
+let multiply = (a, b, ...args) => {
+    let result = a * b;
+    for (let i = 0; i < args.length; i++) {
         result *= args[i];
     }
     return result;
 }
-console.log(multiply(1,2,3,4));
+console.log(multiply(1, 2, 3, 4));
 
 //p.83 07.고차함수의 이해
-const arr = [1,2,3,4,5];
+const arr = [1, 2, 3, 4, 5];
 const arr2x = [];
-for(let i=0; i<arr.length; i++){
-    arr2x.push(arr[i]*2);
+for (let i = 0; i < arr.length; i++) {
+    arr2x.push(arr[i] * 2);
 }
 console.log(arr2x);
 
-var a =1;
-var b =5;
+var a = 1;
+var b = 5;
 
-function outerFunc(){
+function outerFunc() {
     var b;
-    function innerFunc(){
-        a=b;
+
+    function innerFunc() {
+        a = b;
     }
-    console.log(a,b);
-    a=3;
-    b=4;
-    innerFunc(a,b);
-    b=2;
-    console.log(a,b);
+    console.log(a, b);
+    a = 3;
+    b = 4;
+    innerFunc(a, b);
+    b = 2;
+    console.log(a, b);
 }
 outerFunc();
-console.log(a,b);
+console.log(a, b);
