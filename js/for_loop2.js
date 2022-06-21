@@ -1,5 +1,6 @@
-let data =
-    `[{"id":1,"first_name":"Ignace","last_name":"Wynch","email":"iwynch0@bbb.org","gender":"Male","salary":4886},
+//for_loop2.js
+
+let data = `[{"id":1,"first_name":"Ignace","last_name":"Wynch","email":"iwynch0@bbb.org","gender":"Male","salary":4886},
 {"id":2,"first_name":"Marty","last_name":"Grimsdyke","email":"mgrimsdyke1@hatena.ne.jp","gender":"Male","salary":1887},
 {"id":3,"first_name":"Kimmy","last_name":"Goodin","email":"kgoodin2@pcworld.com","gender":"Female","salary":510},
 {"id":4,"first_name":"Bertie","last_name":"Heningam","email":"bheningam3@ucoz.com","gender":"Male","salary":1623},
@@ -15,30 +16,40 @@ let data =
 {"id":14,"first_name":"Elaina","last_name":"Rappoport","email":"erappoportd@privacy.gov.au","gender":"Genderqueer","salary":3766},
 {"id":15,"first_name":"Carlin","last_name":"Moggach","email":"cmoggache@vinaora.com","gender":"Female","salary":4166}]`
 
+let ary = JSON.parse(data); //문자열을 자바스크립트에서 사용하는 object로 변경
+console.log(ary);
+//forEach
+// ary.forEach(elem => {
+//     if (elem.id % 2 == 1) {
+//         console.log(elem)
+//     }
+// });
 
+let femaleAry = ary.filter((elem) => elem.gender == 'Female');
+console.log(femaleAry);
 
-let objAry = JSON.parse(data); //문자열 => 오브젝트
-console.log(objAry);
+console.clear();
 
-//표 형식으로 출력
-let result = objAry.reduce(function (accum, curr, currIdx, ary) {
+let newCompany = ary.map((elem)=> {
+    let newElem = {};   //A'
+    newElem.nID = elem.id;
+    newElem.name = elem.first_name+' '+ elem.last_name;
+    newElem.salary = elem.salary*1.5;
+    newElem.isNew = elem.salary > 4000 ? false : true;
+    return newElem;
+}).filter(elem => elem.isNew)
+// .forEach(elem => {console.log(elem)});
+console.log(newCompany);
 
-    if (currIdx == 0) {
-        accum += `<table border=1>`
+console.clear();
+
+let result = newCompany.reduce((accum, curr)=> {
+    console.log(accum, curr.salary);
+    if(curr.salary<=4000){
+    sum = accum+curr.salary;
     }
-    if (curr.gender == gender) {
-        accum += '<tr>'
-        for (let field in curr) {
-            accum += `<td>${curr[field]}</td>`
-        }
-        accum += '</tr>'
-    }
-    if (currIdx == objAry.length - 1) {
-        accum += `</table>`;
-    }
-    return accum;
-}, '');
-
+    return sum;
+},0);   //새로운 회사 직원들의 급여 합.
 console.log(result);
-document.write(result);
 
+//4천 이하

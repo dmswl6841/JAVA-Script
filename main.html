@@ -6,21 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="js/calender_date.js"></script>
+
 </head>
 
 <body>
     <!-- <input type="file" id="selcetFile" accept="text/plain"> -->
-    <!-- <button id = "add">클릭</button>
-    <script>
-        let btn = document.getElementById("add");
-        console.log(btn);
-        btn.addEventListener('click',function(){
-            console.log(this)   //window(x), object(x), eventTarget(x)
-            // alter ("버튼을 클릭")
+    <!-- <button id = "add">클릭</button> -->
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+    </ul>
 
+    <div>
+        <h1>Cities</h1>
+        <ul>
+            <li id="one" class="red">Seoul</li>
+            <li id="two" class="red">London</li>
+            <li id="three" class="red">Newyork</li>
+            <li id="four">Tokyo</li>
+        </ul>
+    </div>
+    <!-- <script src="js/array_method.js"></script> -->
+    <button id="add">클릭</button>
+    <button>클릭</button>
+    <script>
+        let list = document.getElementsByTagName('li');
+        let detail = list[3];
+        //element, attribute, text => node, DOM API(method(), 속성)
+        let attNod = detail.getAttribute('id');
+        let txtNod = detail.childNodes[0];
+        console.log(detail, attNod, txtNod);
+
+        let add1 = document.getElementById('add');
+        add1.addEventListener('mouseover', function () {
+            //element node 생성
+            let li = document.createElement('li');
+            li.innerHTML = '대구';
+            let ul = document.querySelector('div > ul');
+            ul.appendChild(li); //<ul><li>대구</li></ul>
         })
-    </script> -->
+
+        let btns = document.querySelectorAll('button'); //NodeList
+        btns[1].addEventListener('mouseout', function () {
+            document.querySelector('div > ul > li').remove();
+        })
+        console.log(btns[1]);
+    </script>
+
+
+
 </body>
 
 </html>

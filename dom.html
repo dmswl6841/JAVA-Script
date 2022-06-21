@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom.html</title>
+</head>
+
+<body>
+    <div id="show">
+        <!-- div#id div.class -->
+    </div>
+    <table border='1'>
+
+    </table>
+    <script>
+        let students = [{
+            sno: 1,
+            sname: '이희수'
+        }, {
+            sno: 2,
+            sname: '권소정'
+        }, {
+            sno: 3,
+            sname: '김하은'
+        }];
+        //DOM (document Object Model) => object : 속성, 기능
+        document.getElementById('show');
+
+        //요소생성. createElment()
+        let ul = document.createElement('ul')
+        students.forEach(elem => {
+            let li = document.createElement('li')
+            li.setAttribute('id', elem.sno)
+            let txt = document.createTextNode(`${elem.sno},${elem.sname}`)
+            li.appendChild(txt);
+            console.log(li);
+            ul.appendChild(li);
+        })
+        console.log(ul);
+        show.appendChild(ul); //부모요소.appendChild(자식요소)
+
+        console.clear();
+
+        let table = document.querySelector('table');
+        // console.log('table',table)
+
+        function makeTable() {
+            students.forEach(elem => {
+                let tr = document.createElement('tr')
+                for (let field in elem) {
+                    let td = document.createElement('td')
+                    let txt = document.createTextNode(`${elem[field]}`)
+                    td.appendChild(txt);
+                    tr.appendChild(td)
+                }
+                table.appendChild(tr);
+            })
+            return table;
+        }
+        result = show.appendChild(makeTable());
+        console.log(result)
+    </script>
+
+</body>
+
+</html>
