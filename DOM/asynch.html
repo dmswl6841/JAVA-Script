@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asynch.html</title>
+    <script>
+        // 동기 vs 비동기
+        // console.log('start');
+        // setTimeout(function () {
+        //     console.log('mid');
+        // }, 1000); //1000은 ms 1000ms = 1s
+        // console.log('end');
+        // // => strat end (late 1s) mid   : 비동기 방식
+        // // setTimeout은 비동기 방식이다.
+
+        // setTimeout(function () {
+        //     console.log('start');
+
+        //     setTimeout(function () {
+        //         console.log('mid');
+
+        //         setTimeout(function () {
+        //             console.log('end');
+        //         }, 1500);
+
+        //     }, 2000);
+
+        // }, 1000); //1000은 ms 1000ms = 1s
+        // (late 1s) start (late 1.5s) mid (late 2) end    :  동기 방식
+
+        // 비동기 방식 : Ajax(Asynhoronous Javascript And XML);
+
+        // let xhtp = new XMLHttpRequest(); //대표적인 Ajax : 파일정보 읽기
+        // xhtp.open('get', 'data.txt'); //요청방식, 요청 URL
+        // xhtp.send();
+        // xhtp.onload = function () { //on~ : 이벤트 구문 / onload : 결과를 불러오는 속성 
+        //     console.log(xhtp.responseText); // xhtp.responseText : 결과를 받아오는 속성
+        //     document.write(xhtp.responseText);
+        // }
+        // xhtp = new XMLHttpRequest();
+        // xhtp.open('get', 'data.json');
+        // xhtp.send();
+        // xhtp.onload = function () {
+        //     console.log(xhtp.responseText);
+        //     let data = JSON.parse(xhtp.responseText); //text 형식을 java script의 object형식으로 바꿈
+        //     console.log(data);
+        // }
+
+        xhtp = new XMLHttpRequest();
+        xhtp.open('get', '../js/dataset.xml');
+        xhtp.send();
+        xhtp.onload = function () {
+            console.log(xhtp.responseXML);
+            let doc = xhtp.responseXML;
+            let records = doc.getElementsByTagName('record'); //HTML Collection
+            records = doc.querySelectorAll('record'); //NodeList  배열
+            console.log(records[0].children[1].innerHTML);
+
+            let show = document.getElementById('show');
+
+            records.forEach(member => {
+                let str = '';
+
+                // member.children[0], innerHTML; //id
+                // member.children[1], innerHTML; //first_name
+                //너무 길어져서 for문으로 대체
+
+                for (let i = 0; i < member.children.length; i++) {
+                    str += member.children[i].innerHTML + " ";;
+                }
+                console.log(str);
+
+                let li = document.createElement('li');
+                let txt = document.createTextNode(str);
+
+                li.appendChild(txt);
+                show.appendChild(li);
+            });
+        }
+
+        // 위의 함수를 분리
+        xhtp = new XMLHttpRequest();
+        xhtp.open('get', '../js/dataset.xml');
+        xhtp.send();
+        xhtp.onload = loadCallback;
+
+        let ajax = new XMLHttpRequest();
+        ajax.open('get', '../js/dataset.xml');
+        ajax.onload = loadCallback;
+
+        function loadCallback() {
+            console.log(this.responseXML); //this로 바꾸면 어디서든 사용 할 수 있다.
+            let doc = this.responseXML;
+            let records = doc.getElementsByTagName('record'); //HTML Collection
+            records = doc.querySelectorAll('record'); //NodeList  배열
+            console.log(records[0].children[1].innerHTML);
+
+            let show = document.getElementById('show');
+
+            records.forEach(member => {
+                let str = '';
+
+                for (let i = 0; i < member.children.length; i++) {
+                    str += member.children[i].innerHTML + " ";;
+                }
+                console.log(str);
+
+                let li = document.createElement('li');
+                let txt = document.createTextNode(str);
+
+                li.appendChild(txt);
+                show.appendChild(li);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="show">
+        <!-- <li>id,fn,ln,em,sal</li> -->
+    </ul>
+</body>
+
+</html>
