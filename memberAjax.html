@@ -25,28 +25,19 @@ input[name='phone'] {
 </head>
 <body>
 	<form action="../index.html" name="memberForm">
-		<label for="memberId">회원번호</label>
-		<input type="number" name="memberId" id="memberId"><br>
-		
-		<label for="memberName">회원이름</label>
-		<input type="text" name="memberName" id="memberName"><br>
-		
-		<label for="memberPhone">연락처</label>
-		<input type="text" name="phone" id="phone"><br> 
-		
-		<label for="memberAddr">주소</label>
-		<input type="text" name="addr" id="addr"><br>
-		
-		<label for="memberbirth">생년월일</label>
-		<input type="date" name="birth" id="birth"><br>
-		
-		<label for="memberImage">사진</label>
-		<input type="file" name="image" id="image"><br>
-		
-		<input type="submit" value="추가">
-		<input type="reset" value="초기화">
-		<input type="button" value="선택삭제" id="deleteSel">
-		<input type="button" value="수정" id="modify">
+		<label for="memberId">회원번호</label> <input type="number"
+			name="memberId" id="memberId"><br> <label
+			for="memberName">회원이름</label> <input type="text" name="memberName"
+			id="memberName"><br> <label for="memberPhone">연락처</label>
+		<input type="text" name="phone" id="phone"><br> <label
+			for="memberAddr">주소</label> <input type="text" name="addr" id="addr"><br>
+
+		<label for="memberbirth">생년월일</label> <input type="date" name="birth"
+			id="birth"><br> <label for="memberImage">사진</label> <input
+			type="file" name="image" id="image"><br> <input
+			type="submit" value="추가"> <input type="reset" value="초기화">
+		<input type="button" value="선택삭제" id="deleteSel"> <input
+			type="button" value="수정" id="modify">
 	</form>
 	<div id="show">
 		<table border="1">
@@ -74,11 +65,11 @@ input[name='phone'] {
 	let xhtp = new XMLHttpRequest();
 	xhtp.open('get','member?cmd=list');
 	xhtp.send();
-	xhtp.onload = showList;
+	xhtp.onload = showList();
 	
 	function showList() {
-		let tbody = document.querySelector('#show tbody');
 		let data = JSON.parse(this.responseText);
+		let tbody = document.querySelector('#show tbody');
 		console.log(data);
 		data.forEach(emp => {
 			tbody.append(mkTr(emp));
