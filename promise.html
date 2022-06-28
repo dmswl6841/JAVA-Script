@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>promise.html</title>
+</head>
+
+<body>
+
+	<div id="show">
+		<table border="1">
+			<thead>
+				<tr>
+					<td>회원번호</td>
+					<td>회원이름</td>
+					<td>연락처</td>
+					<td>주소</td>
+					<td>생년월일</td>
+					<td>사진</td>
+					<td>삭제</td>
+					<td>선택</td>
+				</tr>
+			</thead>
+			<tbody id="memberList">
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+        //promise => fetch: pending(대기), fullfilled(이행 완료), rejected(실패), then(), catch()
+        //promis 개체 fetch 메소드
+        let promise = new Promise(function (resolve,
+            reject) { //실행함수(성공 시)(resolve), 콜백함수(실패 시)(reject)   promise는 비동기 통신
+            setTimeout(function () { //첫번째 매개값()= 함수(콜백함수), 두번째 매개값 = 지연시간
+                resolve('Success'); //성공 시 실행할 콜백함수
+            }, 1000);
+        });
+
+        promise
+            .then(function (result) { //위의 function (resolve)함수와 같다
+                console.log(result);
+            }) //정상적인 값 = then
+            .catch(function (error) {
+                console.error(error);
+            }) //비정상적인 값 = catch
+
+        function asyncWork(value) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    value -= 20;
+                    if (value > 50) {
+                        resolve(value);
+                    } else {
+                        reject(value);
+                    }
+                }, 1000)
+            });
+        }
+
+        asyncWork(100)
+            .then(function (value) {
+                console.log(value);
+                return asyncWork(value);
+            })
+            .then(function (value) {
+                console.log(value);
+                return asyncWork(value);
+            })
+            .then(function (value) {
+                console.log(value);
+                return asyncWork(value);
+            })
+            .catch(function (error) {
+                console.log('catch: ' + error);
+            });
+
+        fetch('member?cmd=list') //반환  //json데이터 
+            .then(function (result) {
+                return result.json(); //text형식 -> json
+            })
+            .then(function (result) {
+            	let tbody = document.querySelector('#show tbody');
+            	result.forEach(member => {
+        			tbody.append(mkTr(member));
+        		});
+            })
+            .catch(function (error) {
+                console.error(error);
+            }) 
+
+        let fields = ['memNo', 'memName', 'memPhone', 'memAddr', 'memBirth', 'memImage'];
+
+        //회원정보 => tr 생성
+        function mkTr(member) {
+            let tr = document.createElement('tr');
+            //tr.addEventListener('click', showForm)
+            tr.setAttribute('id', member.memNo); //tr의 attribute 활용
+            fields.forEach(field => {
+                let td = document.createElement('td');
+                //null, 0, undefined, '' => false. 이외 true
+                td.innerHTML = member[field] ? member[field] : (!'' ? field == 'memImage' ? 'no imag' : '' :
+                    '');
+                //1. td.innerHTML = member[field]?member[field] : <<<(!''?field == 'memImage'?'no imag': '':'')>>>;
+                //2. !''? <<<field == 'memImage'?'no imag': ''>>> :''
+                //3. field == 'memImage'?'no imag': ''
+                tr.append(td);
+            })
+            //삭제 버튼
+            let btn = document.createElement('button');
+            btn.innerHTML = '삭제';
+            //btn.addEventListener('click', rowDelete, false);
+            //bubbling, capture
+            let td = document.createElement('td');
+            td.append(btn);
+            tr.append(td);
+
+            //체크박스. input타입이 체크박스
+          //let checkbox = document.createElement('input');
+            checkbox.setAttribute('type', 'checkbox');
+            td = document.createElement('td');
+            td.append(checkbox);
+            tr.append(td);
+
+            return tr;
+        }
+    </script>
+</body>
+
+</html>
