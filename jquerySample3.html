@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            url: './member',
+            method: 'get',
+            data: 'cmd=list',
+            success: function (result) {
+                console.log(result);
+                let tbody = $('table>tbody');
+
+                $(result).each(function (ind, elem) {
+
+                    let today = new Date();
+                    let birth = new Date(elem.memBirth.slice(0,10));
+                    let age = today.getFullYear()-birth.getFullYear();
+                    console.log(today.getFullYear()-birth.getFullYear())
+
+                    tbody.append(
+                        $('<tr>').append(
+                            $('<td>').text(elem.memNo),
+                            $('<td>').text(elem.memName),
+                            $('<td>').text(elem.memPhone),
+                            $('<td>').text(age),
+                        )
+                    )
+                })
+            },
+            error: function (err) {
+                console.log(err);
+
+            }
+        })
+
+               
+
+    })
+</script>
+<script>
+
+
+</script>
+
+<body>
+    <div id="show">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>회원아이디</th>
+                    <th>회원이름</th>
+                    <th>회원연락처</th>
+                    <th>회원나이</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

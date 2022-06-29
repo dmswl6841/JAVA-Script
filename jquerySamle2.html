@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    let data = [{
+        id: 'user1',
+        name: '구비둘',
+        phone: '010-5555-5555',
+        age: 33
+    }, {
+        id: 'user2',
+        name: '이사해',
+        phone: '010-2222-4444',
+        age: 28
+    }]
+
+    $(document).ready(function () { //$(document).ready = 자바스크립트의 DOMContentLoaded와 같다.
+        console.log($(data))
+        console.log(data)
+
+        let tbody = $('table>tbody');
+
+        $(data).each((ind, val) => {
+            let delBtn = $('<button>').text('삭제');
+            delBtn.on('click', function () {
+                console.log($(this));
+                $(this).parent().parent().remove();
+            })
+
+            tbody.append(
+                $('<tr>').attr('id', val.id)
+                .append(
+                    $('<td>').html(val.id),
+                    $('<td>').html(val.name),
+                    $('<td>').html(val.phone),
+                    $('<td>').html(val.age),
+                    $('<td>').append(delBtn)
+                )
+            )
+        });
+    });
+</script>
+
+<body>
+    <div id="show">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>회원아이디</th>
+                    <th>회원이름</th>
+                    <th>회원연락처</th>
+                    <th>회원나이</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

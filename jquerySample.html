@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>jquerySample</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script>
+	//자바스크립트 기능구현 jquery제공하는 api를 이용해서 기능구현
+	document.addEventListener('DOMContentLoaded', function() {
+		let ul = document.createElement('ul');
+		let li = document.createElement('li');
+		let text = document.createTextNode("Apple")
+		li.append(text);
+		ul.append(li);
+
+		li = document.createElement('li');
+		text = document.createTextNode("Banana");
+
+		li.append(text);
+		ul.append(li);
+
+		document.getElementById('show').append(ul);
+		
+		
+	//jquery 방식 $('선택자 or 태그')
+	let ulTag = $('<ul>').append($('<li>').html('Apple')
+			,$('<li>').html('Banana'));
+	$('#show').append(ulTag);
+	
+	
+	})
+	
+	
+
+	
+	
+	
+</script>
+</head>
+
+<body>
+	<div id="show">
+		<ul>
+			<li>Apple</li>
+			<li>Banana</li>
+		</ul>
+	</div>
+</body>
+
+</html>
