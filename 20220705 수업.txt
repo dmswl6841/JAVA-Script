@@ -1,0 +1,38 @@
+<복습>
+서블릿	- html포함
+jps	- 서버 스크립트 언어 html(뷰)
+	  안에 자바코드	<% 서비스로직 %>
+서블릿(컨트롤러(서비스(DB처리) + jsp(뷰)
+
+contextpath : add
+
+wabapp
+	WEB-INF
+		hello.jsp
+
+주소는?
+http://localhost/WEB-INF/hello.jsp
+*WEB-INF 안에 jsp가 있다면 무조건 서블릿 -> jps (보안상 이유)
+
+@WebServlet("/hello")
+class 서블릿이름 extends HttServlet {
+
+}
+
+주소는? (contextpath : add)
+http://localhost/add/hello
+
+@WebServlet("/hello")
+class 서블릿이름 extends HttServlet {
+	doget(request, response) {
+		request.getDepacherServlet("/WEB-INF/hello.jsp")
+		.forward(request,response);
+	}
+}
+
+-----------------------------------------------------------------------------
+서블릿 방식
+get : <a href ="url"> or <location href = "url">
+post : <form method="post">	//post는 form에서만 사용
+
+
